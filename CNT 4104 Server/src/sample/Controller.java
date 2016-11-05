@@ -79,13 +79,13 @@ public class Controller {
     }
 
     protected void setupRobot(){
-        try {
-            System.loadLibrary("AriaJava");
-            System.out.println("Library Loaded successfully");
-        } catch (UnsatisfiedLinkError e) {
-            System.err.println("Native code library libAriaJava failed to load. Make sure that its directory is in your library path; See javaExamples/README.txt and the chapter on Dynamic Linking Problems in the SWIG Java documentation (http://www.swig.org) for help.\n" + e);
-            System.exit(1);
-        }
+//        try {
+//            System.loadLibrary("AriaJava");
+//            System.out.println("Library Loaded successfully");
+//        } catch (UnsatisfiedLinkError e) {
+//            System.err.println("Native code library libAriaJava failed to load. Make sure that its directory is in your library path; See javaExamples/README.txt and the chapter on Dynamic Linking Problems in the SWIG Java documentation (http://www.swig.org) for help.\n" + e);
+//            System.exit(1);
+//        }
     }
 
 }
