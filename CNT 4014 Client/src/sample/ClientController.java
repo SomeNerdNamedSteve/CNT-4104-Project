@@ -3,12 +3,12 @@ package sample;
 import javafx.fxml.FXML;
 import javafx.scene.web.*;
 import javafx.scene.control.*;
-
 import javafx.event.ActionEvent;
+import javafx.scene.media.*;
 
-import java.io.IOException;
+import java.io.*;
 import java.net.*;
-
+import java.util.regex.*;
 
 public class ClientController {
 
@@ -61,7 +61,7 @@ public class ClientController {
             ip = ipTest;
 
             //if all input is correct, the user can now use the server
-            s = new Socket(ip, ROBOTPORT);
+            //s = new Socket(ip, ROBOTPORT);
             startClientFunctions();
 
         }else{
@@ -78,8 +78,7 @@ public class ClientController {
     }
 
     protected void startClientFunctions(){
-        WebEngine we = camView.getEngine();
-        we.load(String.format("http://%s:$d", ip, STREAMPORT));
+        loadWebcamStream();
     }
 
     @FXML protected void sendCommands(ActionEvent e){
@@ -88,33 +87,16 @@ public class ClientController {
 
     private boolean isValidIP(String s){
 
-        String[] nums = s.split(".");
+        Pattern p = Pattern.compile("^(?:(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\\.){3}(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)$");
+        Matcher m = p.matcher(s);
+        return m.find();
 
-        if(s == null){
-            return false;
-        }
+    }
 
-        if(s.isEmpty()){
-            return false;
-        }
-
-        if(s.endsWith(".")){
-            return false;
-        }
-
-        if(nums.length != 4){
-            return false;
-        }
-
-        for(String num : nums){
-            int n = Integer.parseInt(num);
-            if(n > 255 || n < 0){
-                return false;
-            }
-        }
-
-        return true;
-
+    //http://172.26.16.103/
+    public void loadWebcamStream(){
+        WebEngine we = camView.getEngine();
+        we.load(String.format("http://%s:%d", ip, STREAMPORT));
     }
 
 }
