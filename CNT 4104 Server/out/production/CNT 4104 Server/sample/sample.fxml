@@ -1,0 +1,31 @@
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.control.*?>
+
+<GridPane fx:controller="sample.Controller"
+          xmlns:fx="http://javafx.com/fxml" alignment="TOP_CENTER" hgap="10" vgap="10">
+    <padding>
+        <Insets top="25" right="25" bottom="25" left="25"/>
+    </padding>
+
+    <Button GridPane.columnIndex="1"
+            GridPane.rowIndex="0"
+            textAlignment="CENTER"
+            text="Start Server" onAction="#setIPAndVerifyText"/>
+    <Button GridPane.columnIndex="2"
+            GridPane.rowIndex="0"
+            textAlignment="CENTER"
+            text="Stop Server" onAction="#stopServer"/>
+    <TextField GridPane.columnIndex="1"
+           GridPane.rowIndex="1" editable="false" fx:id="ipAddress" text="IP Address: "/>
+    <TextField GridPane.columnIndex="2"
+               GridPane.rowIndex="1" editable="false" fx:id="verification" text="Verification Code: "/>
+    <Label GridPane.columnIndex="1"
+           GridPane.rowIndex="2" textAlignment="CENTER"  text="Robot Update"/>
+    <Label GridPane.columnIndex="2"
+           GridPane.rowIndex="2" textAlignment="CENTER"  text="Webcam Update"/>
+    <TextArea GridPane.columnIndex="1"
+              GridPane.rowIndex="3" editable="false" fx:id="robotUpdate"/>
+    <TextArea GridPane.columnIndex="2"
+              GridPane.rowIndex="3" editable="false" fx:id="webcamUpdate"/>
+</GridPane>
